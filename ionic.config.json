@@ -1,0 +1,8 @@
+{
+  "name": "sonopolifasico",
+  "app_id": "d3df33ab",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
