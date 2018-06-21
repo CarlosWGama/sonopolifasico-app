@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { Cycle, CycleType } from '../../models/Cycle';
 import { CycleUtil } from '../../Util/CycleUtil';
+import { CycleProvider } from '../../providers/cycle/cycle';
+import { HomePage } from '../home/home';
 
 /**
  * @author Carlos W. Gama
@@ -18,7 +20,10 @@ export class CreateCyclesModalPage {
   sMinute: string = "00";
   hours: string[] = []
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public loadCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public viewCtrl: ViewController,
+    private cycleProvider: CycleProvider) {
     
     for (let i = 0; i < 24; i++) 
       this.hours.push((i < 10 ? "0"+i : i.toString() ));
@@ -37,15 +42,6 @@ export class CreateCyclesModalPage {
 
   /** Cria os ciclos do usuário */
   create(): void {
-    //Loading 
-    let loading = this.loadCtrl.create({
-      content: "Aguarde, estamos criando os ciclos",
-      duration: 5000,
-      dismissOnPageChange: true,
-      enableBackdropDismiss: false
-    });
-    loading.present();
-
     //Criar ciclos
     let cycles: Cycle[] = [];
     let cycleType = this.navParams.get("cycle") as CycleType;
@@ -130,7 +126,10 @@ export class CreateCyclesModalPage {
         break;
     }
 
-    console.log(cycles);
+    cycles.forEach((c: Cycle) => {
+      this.cycleProvider.create(c);
+    });
+    this.navCtrl.setRoot(HomePage);
   }
 
 }

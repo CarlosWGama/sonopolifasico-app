@@ -27,14 +27,14 @@
   <div *ngIf="hasCycle">
 
     <!-- CICLOS -->
-    <ion-card color="cards">
+    <ion-card color="cards" *ngFor="let cycle of cycles; let i = index">
       <!-- CICLO -->
-      <ion-card-header>Ciclo 1</ion-card-header>
+      <ion-card-header>Ciclo {{i + 1}}</ion-card-header>
       
       <!-- HORARIOS -->
       <ion-card-content>
-        <p class="hora-inicio"><b>Deitar:</b> 18:00</p>
-        <p class="hora-fim"><b>Acordar:</b> 20:00</p>
+        <p class="hora-inicio"><b>Deitar:</b> {{cycle.startHour}}:{{cycle.startMinute}}</p>
+        <p class="hora-fim"><b>Acordar:</b> {{cycle.finishHour}}:{{cycle.finishMinute}}</p>
       </ion-card-content>
 
       <!-- OPÇÕES -->
@@ -49,54 +49,13 @@
     </ion-card>
 
   
-    <ion-card color="cards">
-      <!-- CICLO -->
-      <ion-card-header>Ciclo 2</ion-card-header>
-      
-      <!-- HORARIOS -->
-      <ion-card-content>
-        <p class="hora-inicio"><b>Deitar:</b> 18:00</p>
-        <p class="hora-fim"><b>Acordar:</b> 20:00</p>
-      </ion-card-content>
-  
-      <!-- OPÇÕES -->
-      <ion-row style="clear:both">
-        <ion-col>
-          <button ion-button icon-start clear small><ion-icon name="alarm"></ion-icon>Alarme</button>
-        </ion-col>
-        <ion-col>
-            <button ion-button icon-start clear small><ion-icon name="trash"></ion-icon>Remover</button>
-          </ion-col>
-      </ion-row>
-    </ion-card>
-
-    <ion-card color="cards">
-        <!-- CICLO -->
-        <ion-card-header>Ciclo 2</ion-card-header>
-        
-        <!-- HORARIOS -->
-        <ion-card-content>
-          <p class="hora-inicio"><b>Deitar:</b> 18:00</p>
-          <p class="hora-fim"><b>Acordar:</b> 20:00</p>
-        </ion-card-content>
-    
-        <!-- OPÇÕES -->
-        <ion-row style="clear:both">
-          <ion-col>
-            <button ion-button icon-start clear small><ion-icon name="alarm"></ion-icon>Alarme</button>
-          </ion-col>
-          <ion-col>
-              <button ion-button icon-start clear small><ion-icon name="trash"></ion-icon>Remover</button>
-            </ion-col>
-        </ion-row>
-      </ion-card>
   </div>
 
   <ion-fab bottom right *ngIf="hasCycle">
       <button ion-fab mini color="danger"><ion-icon name="options"></ion-icon></button>
       <ion-fab-list side="top">
          <button ion-fab><ion-icon name="add"></ion-icon></button>
-        <button ion-fab><ion-icon name="trash"></ion-icon></button>
+        <button ion-fab (click)="deleteAll()"><ion-icon name="trash"></ion-icon></button>
       </ion-fab-list>
   </ion-fab>
 

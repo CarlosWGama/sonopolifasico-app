@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import { NewCyclePage } from '../new-cycle/new-cycle';
+import { CycleProvider } from '../../providers/cycle/cycle';
+import { Cycle } from '../../models/Cycle';
 
 /**
  * @author Carlos W. Gama
@@ -17,13 +19,37 @@ export class HomePage {
   clock: any;
 
   hasCycle: boolean = false;
+  cycles: Cycle[] = [];
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private cycleProvider: CycleProvider, private alertCtrl: AlertController, private loadCtrl: LoadingController) {
 
   }
 
   ionViewDidLoad() {
-    
+    this.updateCycles();
+  }
+
+  /** Atualiza os ciclos e Chart */
+  private updateCycles(): void {
+    let loading = this.loadCtrl.create({
+      content:"Atualizando",
+      dismissOnPageChange: true,
+      enableBackdropDismiss: false
+    });
+
+    loading.present();
+    this.cycleProvider.getAll().then((cycles: Cycle[]) => {
+      this.cycles = cycles;
+      this.hasCycle = (this.cycles != null && this.cycles.length > 0) 
+      //this.createClock();
+      loading.dismiss();
+    });
+  }
+
+  /**
+   * Cria o relógio
+   */
+  private createClock() {
     
     var tempo = [];
     var cores = [];
@@ -60,6 +86,23 @@ export class HomePage {
   /** Redireciona para a página de Criar novo Ciclo de Sono */
   newSleepCycle(): void {
     this.navCtrl.push(NewCyclePage);
+  }
+
+  /**
+   * Apaga todos ciclos ativos
+   */
+  deleteAll(): void {
+    this.alertCtrl.create({
+      title: "Deletar todos ciclos",
+      message: "Essa ação não pode ser desfeita",
+      buttons:[
+        {text: "Cancelar", role:"cancel"},
+        {text: "Excluir", handler: (data) =>  {
+          this.cycleProvider.deleteAll();
+          this.updateCycles();
+        }}
+      ]
+    }).present();
   }
 
 }

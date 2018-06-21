@@ -10,6 +10,7 @@ import { NewCyclePageModule } from '../pages/new-cycle/new-cycle.module';
 import { CreateCyclesModalPageModule } from '../pages/create-cycles-modal/create-cycles-modal.module';
 import { CreateCustomCycleModalPageModule } from '../pages/create-custom-cycle-modal/create-custom-cycle-modal.module';
 import { CycleProvider } from '../providers/cycle/cycle';
+import { SQLite } from '@ionic-native/sqlite';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CycleProvider } from '../providers/cycle/cycle';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CycleProvider
+    CycleProvider,
+    SQLite
   ]
 })
 export class AppModule {}
