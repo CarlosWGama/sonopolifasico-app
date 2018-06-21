@@ -1,14 +1,103 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      SEUS CICLOS
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+
+  
+  <div *ngIf="false">
+    <ion-card color="light">
+      <ion-card-content>
+        <p style="text-align:center">Você ainda não possui nenhum ciclo</p>
+      </ion-card-content>
+    </ion-card>
+  
+    <button id="create-cycle" ion-button full color="danger">Criar novo Ciclo</button>
+  </div>
+
+  <canvas id="clock" #clock width="70" height="70" [hidden]="false"></canvas>
+
+  
+  
+  <!-- CONTEUDOS -->
+  <div *ngIf="true">
+
+    <!-- CICLOS -->
+    <ion-card color="cards">
+      <!-- CICLO -->
+      <ion-card-header>Ciclo 1</ion-card-header>
+      
+      <!-- HORARIOS -->
+      <ion-card-content>
+        <p class="hora-inicio"><b>Deitar:</b> 18:00</p>
+        <p class="hora-fim"><b>Acordar:</b> 20:00</p>
+      </ion-card-content>
+
+      <!-- OPÇÕES -->
+      <ion-row style="clear:both">
+        <ion-col>
+          <button ion-button icon-start clear small><ion-icon name="alarm"></ion-icon>Alarme</button>
+        </ion-col>
+        <ion-col>
+            <button ion-button icon-start clear small><ion-icon name="trash"></ion-icon>Remover</button>
+          </ion-col>
+      </ion-row>
+    </ion-card>
+
+  
+    <ion-card color="cards">
+      <!-- CICLO -->
+      <ion-card-header>Ciclo 2</ion-card-header>
+      
+      <!-- HORARIOS -->
+      <ion-card-content>
+        <p class="hora-inicio"><b>Deitar:</b> 18:00</p>
+        <p class="hora-fim"><b>Acordar:</b> 20:00</p>
+      </ion-card-content>
+  
+      <!-- OPÇÕES -->
+      <ion-row style="clear:both">
+        <ion-col>
+          <button ion-button icon-start clear small><ion-icon name="alarm"></ion-icon>Alarme</button>
+        </ion-col>
+        <ion-col>
+            <button ion-button icon-start clear small><ion-icon name="trash"></ion-icon>Remover</button>
+          </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-card color="cards">
+        <!-- CICLO -->
+        <ion-card-header>Ciclo 2</ion-card-header>
+        
+        <!-- HORARIOS -->
+        <ion-card-content>
+          <p class="hora-inicio"><b>Deitar:</b> 18:00</p>
+          <p class="hora-fim"><b>Acordar:</b> 20:00</p>
+        </ion-card-content>
+    
+        <!-- OPÇÕES -->
+        <ion-row style="clear:both">
+          <ion-col>
+            <button ion-button icon-start clear small><ion-icon name="alarm"></ion-icon>Alarme</button>
+          </ion-col>
+          <ion-col>
+              <button ion-button icon-start clear small><ion-icon name="trash"></ion-icon>Remover</button>
+            </ion-col>
+        </ion-row>
+      </ion-card>
+  </div>
+
+  <ion-fab bottom right *ngIf="true">
+      <button ion-fab mini color="danger"><ion-icon name="options"></ion-icon></button>
+      <ion-fab-list side="top">
+         <button ion-fab><ion-icon name="add"></ion-icon></button>
+        <button ion-fab><ion-icon name="trash"></ion-icon></button>
+      </ion-fab-list>
+  </ion-fab>
+
 </ion-content>
