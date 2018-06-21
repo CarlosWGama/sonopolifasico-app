@@ -6,6 +6,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { NewCyclePageModule } from '../pages/new-cycle/new-cycle.module';
+import { CreateCyclesModalPageModule } from '../pages/create-cycles-modal/create-cycles-modal.module';
+import { CreateCustomCycleModalPageModule } from '../pages/create-custom-cycle-modal/create-custom-cycle-modal.module';
+import { CycleProvider } from '../providers/cycle/cycle';
 
 @NgModule({
   declarations: [
@@ -14,7 +18,10 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    NewCyclePageModule,
+    CreateCyclesModalPageModule,
+    CreateCustomCycleModalPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,7 +31,8 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CycleProvider
   ]
 })
 export class AppModule {}

@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+   
+      <ion-buttons start>
+        <button ion-button color="danger" (click)="close()">Cancelar</button>
+      </ion-buttons>
+    
+
+      <ion-title> Primeiro Ciclo </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ 
+    <p class="info">Selecione a hora do seu primeiro ciclo</p> 
+    <p text-center>(sono mais longo)</p>
+
+    <ion-item>
+      <ion-label>Hora : Minuto</ion-label>
+      
+      <ion-select [(ngModel)]="sHour">
+        <ion-option *ngFor="let h of hours; let i = index " value="{{h}}" [selected]="i == 0">{{h}}</ion-option>
+      </ion-select> 
+      <ion-select [(ngModel)]="sMinute">
+          <ion-option value="00" selected>00</ion-option>
+          <ion-option value="10">10</ion-option>
+          <ion-option value="20">20</ion-option>
+          <ion-option value="30">30</ion-option>
+          <ion-option value="40">40</ion-option>
+          <ion-option value="50">50</ion-option>
+        </ion-select>
+
+    </ion-item>
+
+    <button ion-button full (click)="create()">Criar</button>
+</ion-content>

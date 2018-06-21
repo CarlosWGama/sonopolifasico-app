@@ -9,22 +9,22 @@
 <ion-content>
 
   
-  <div *ngIf="false">
+  <div *ngIf="!hasCycle">
     <ion-card color="light">
       <ion-card-content>
         <p style="text-align:center">Você ainda não possui nenhum ciclo</p>
       </ion-card-content>
     </ion-card>
   
-    <button id="create-cycle" ion-button full color="danger">Criar novo Ciclo</button>
+    <button id="create-cycle" ion-button full color="danger" (click)="newSleepCycle()" >Criar novo Ciclo</button>
   </div>
 
-  <canvas id="clock" #clock width="70" height="70" [hidden]="false"></canvas>
+  <canvas id="clock" #clock width="70" height="70" [hidden]="!hasCycle"></canvas>
 
   
   
   <!-- CONTEUDOS -->
-  <div *ngIf="true">
+  <div *ngIf="hasCycle">
 
     <!-- CICLOS -->
     <ion-card color="cards">
@@ -92,7 +92,7 @@
       </ion-card>
   </div>
 
-  <ion-fab bottom right *ngIf="true">
+  <ion-fab bottom right *ngIf="hasCycle">
       <button ion-fab mini color="danger"><ion-icon name="options"></ion-icon></button>
       <ion-fab-list side="top">
          <button ion-fab><ion-icon name="add"></ion-icon></button>

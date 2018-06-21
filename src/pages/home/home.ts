@@ -1,7 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Chart } from 'chart.js';
+import { NewCyclePage } from '../new-cycle/new-cycle';
 
+/**
+ * @author Carlos W. Gama
+ * @since 1.0.0
+ */
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -9,7 +14,9 @@ import { Chart } from 'chart.js';
 export class HomePage {
 
   @ViewChild("clock")
-  clock;
+  clock: any;
+
+  hasCycle: boolean = false;
 
   constructor(public navCtrl: NavController) {
 
@@ -47,9 +54,12 @@ export class HomePage {
           display: false
         }
       }
+    });
+  }
 
-  });
-
+  /** Redireciona para a página de Criar novo Ciclo de Sono */
+  newSleepCycle(): void {
+    this.navCtrl.push(NewCyclePage);
   }
 
 }
