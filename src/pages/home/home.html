@@ -33,8 +33,8 @@
       
       <!-- HORARIOS -->
       <ion-card-content>
-        <p class="hora-inicio"><b>Deitar:</b> {{cycle.startHour}}:{{cycle.startMinute}}</p>
-        <p class="hora-fim"><b>Acordar:</b> {{cycle.finishHour}}:{{cycle.finishMinute}}</p>
+        <p class="hora-inicio"><b>Deitar:</b> {{cycle.startHour + ":" + cycle.startMinute | time}}</p>
+        <p class="hora-fim"><b>Acordar:</b> {{cycle.finishHour+":"+cycle.finishMinute | time}}</p>
       </ion-card-content>
 
       <!-- OPÇÕES -->
@@ -43,7 +43,7 @@
           <button ion-button icon-start clear small><ion-icon name="alarm"></ion-icon>Alarme</button>
         </ion-col>
         <ion-col>
-            <button ion-button icon-start clear small><ion-icon name="trash"></ion-icon>Remover</button>
+            <button ion-button icon-start clear small (click)="delete(cycle.id)"><ion-icon name="trash"></ion-icon>Remover</button>
           </ion-col>
       </ion-row>
     </ion-card>
@@ -54,7 +54,7 @@
   <ion-fab bottom right *ngIf="hasCycle">
       <button ion-fab mini color="danger"><ion-icon name="options"></ion-icon></button>
       <ion-fab-list side="top">
-         <button ion-fab><ion-icon name="add"></ion-icon></button>
+         <button ion-fab (click)="newCycle()"><ion-icon name="add"></ion-icon></button>
         <button ion-fab (click)="deleteAll()"><ion-icon name="trash"></ion-icon></button>
       </ion-fab-list>
   </ion-fab>

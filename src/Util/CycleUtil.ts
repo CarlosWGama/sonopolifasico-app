@@ -63,4 +63,59 @@ export class CycleUtil {
         
         return new Cycle(sHour, sMinute, fHour, fMinute);
     }
+
+    public static validateCycle(newCycle: Cycle, cycles: Cycle[]): boolean {
+        let valid = true;
+
+
+        cycles.forEach((c: Cycle) => {
+            //Normatizando ciclo para validação de hora inicila com hora final
+            let nFinishHour = (newCycle.finishHour >= newCycle.startHour ? newCycle.finishHour : newCycle.finishHour + 24);
+            let cFinishHour = (c.finishHour >= c.startHour ? c.finishHour : c.finishHour + 24);
+
+            // =========== MESMO HORARIO ==============//
+            if ((newCycle.startHour == c.startHour && c.startMinute == newCycle.startMinute) ||
+                (newCycle.startHour == c.finishHour && c.finishMinute == newCycle.startMinute) ||
+                (newCycle.finishHour == c.startHour && c.startMinute == newCycle.finishMinute) ||
+                (newCycle.finishHour == c.finishHour && c.finishMinute == newCycle.finishMinute)) {
+                    valid = false;
+                    console.log("Erro 0");
+            }
+
+            //============  Horario inicial ============//
+            //Está entre
+            if (c.startHour < newCycle.startHour && newCycle.startHour < cFinishHour) {
+                valid = false;
+                console.log("Erro 1");
+            }
+
+            //Está na mesma hora inicial, porém minutos diferentes e válidos
+            if ((newCycle.startHour == c.startHour && c.startMinute < newCycle.startMinute) &&
+                (newCycle.startHour < cFinishHour ||
+                (newCycle.startHour == c.finishHour && c.finishMinute > newCycle.startMinute))) {  
+                valid = false;
+                console.log("Erro 2");
+            }
+
+            //============ Horario final ==============/
+            if (c.startHour < nFinishHour && nFinishHour < cFinishHour) {
+                valid = false;
+                console.log("Erro 3");
+            }
+
+            //Está na mesma hora Final, porém minutos diferentes e inválidos
+            if (newCycle.finishHour == c.startHour && c.startMinute <= newCycle.finishMinute) {  
+                valid = false;
+                console.log("Erro 4");
+            }
+
+            //============ CHECANDO SE TEM CICLO DENTRO DO NOVO =============/
+            if (newCycle.startHour < c.startHour && nFinishHour > cFinishHour) {
+                valid = false;
+                console.log("Erro 5");
+            }
+        });
+
+        return valid;
+    } 
 }

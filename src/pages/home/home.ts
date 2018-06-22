@@ -1,9 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController, Button } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import { NewCyclePage } from '../new-cycle/new-cycle';
 import { CycleProvider } from '../../providers/cycle/cycle';
 import { Cycle } from '../../models/Cycle';
+import { CreateCustomCycleModalPage } from '../create-custom-cycle-modal/create-custom-cycle-modal';
 
 /**
  * @author Carlos W. Gama
@@ -21,7 +22,10 @@ export class HomePage {
   hasCycle: boolean = false;
   cycles: Cycle[] = [];
 
-  constructor(public navCtrl: NavController, private cycleProvider: CycleProvider, private alertCtrl: AlertController, private loadCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, 
+    private cycleProvider: CycleProvider, 
+    private alertCtrl: AlertController, 
+    private loadCtrl: LoadingController) {
 
   }
 
@@ -33,7 +37,7 @@ export class HomePage {
   private updateCycles(): void {
     let loading = this.loadCtrl.create({
       content:"Atualizando",
-      dismissOnPageChange: true,
+      //dismissOnPageChange: true,
       enableBackdropDismiss: false
     });
 
@@ -86,6 +90,31 @@ export class HomePage {
   /** Redireciona para a página de Criar novo Ciclo de Sono */
   newSleepCycle(): void {
     this.navCtrl.push(NewCyclePage);
+  }
+
+  /**
+   * cria um unico cclo
+   */
+  newCycle(): void {
+    this.navCtrl.push(CreateCustomCycleModalPage, {cycles: this.cycles});
+  }
+
+  /**
+   * Deleta um ciclo 
+   * @param id |ID do ciclo
+   */
+  delete(id: number): void {
+    this.alertCtrl.create({
+      message: "Tem certeza que deseja deletar esse ciclo?",
+      buttons: [
+        {text: "Cancelar", role: "cancel"},
+        {text: "Excluir", handler: () => {
+          this.cycleProvider.delete(id);
+          this.updateCycles();
+        }}
+      ]
+    }).present();
+    
   }
 
   /**

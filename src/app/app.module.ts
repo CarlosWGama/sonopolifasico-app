@@ -11,6 +11,7 @@ import { CreateCyclesModalPageModule } from '../pages/create-cycles-modal/create
 import { CreateCustomCycleModalPageModule } from '../pages/create-custom-cycle-modal/create-custom-cycle-modal.module';
 import { CycleProvider } from '../providers/cycle/cycle';
 import { SQLite } from '@ionic-native/sqlite';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SQLite } from '@ionic-native/sqlite';
     IonicModule.forRoot(MyApp),
     NewCyclePageModule,
     CreateCyclesModalPageModule,
-    CreateCustomCycleModalPageModule
+    CreateCustomCycleModalPageModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
