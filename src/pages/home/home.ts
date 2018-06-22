@@ -51,9 +51,6 @@ export class HomePage {
 
   }
 
-
-  private text
-
   ionViewDidLoad() {
     // ADMOB
     const bannerConfig: AdMobFreeBannerConfig = {

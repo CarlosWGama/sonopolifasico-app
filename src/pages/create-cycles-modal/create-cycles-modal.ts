@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Cycle, CycleType } from '../../models/Cycle';
 import { CycleUtil } from '../../Util/CycleUtil';
 import { CycleProvider } from '../../providers/cycle/cycle';
