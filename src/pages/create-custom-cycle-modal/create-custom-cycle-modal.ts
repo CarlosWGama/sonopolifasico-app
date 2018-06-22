@@ -49,7 +49,7 @@ export class CreateCustomCycleModalPage {
 
   }
 
-  private textError: number;
+  private textError: string;
   /** Cria o ciclo */
   create(): void {
     let newCycle: Cycle = new Cycle(Number(this.sHour), Number(this.sMinute), Number(this.fHour), Number(this.fMinute));
