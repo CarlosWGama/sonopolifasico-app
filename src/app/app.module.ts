@@ -12,6 +12,7 @@ import { CreateCustomCycleModalPageModule } from '../pages/create-custom-cycle-m
 import { CycleProvider } from '../providers/cycle/cycle';
 import { SQLite } from '@ionic-native/sqlite';
 import { PipesModule } from '../pipes/pipes.module';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PipesModule } from '../pipes/pipes.module';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CycleProvider,
-    SQLite
+    SQLite,
+    AdMobFree
   ]
 })
 export class AppModule {}

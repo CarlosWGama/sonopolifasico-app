@@ -6,6 +6,8 @@ import { CycleProvider } from '../../providers/cycle/cycle';
 import { Cycle } from '../../models/Cycle';
 import { CreateCustomCycleModalPage } from '../create-custom-cycle-modal/create-custom-cycle-modal';
 import { CycleUtil } from '../../Util/CycleUtil';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+
 
 /**
  * @author Carlos W. Gama
@@ -31,11 +33,22 @@ export class HomePage {
   constructor(public navCtrl: NavController, 
     private cycleProvider: CycleProvider, 
     private alertCtrl: AlertController, 
-    private loadCtrl: LoadingController) {
+    private loadCtrl: LoadingController,
+    private admobFree: AdMobFree) {
 
   }
 
   ionViewDidLoad() {
+    // ADMOB
+    const bannerConfig: AdMobFreeBannerConfig = {
+      //id: 'ca-app-pub-8890411738087560/6356948030', //Código da propaganda
+      isTesting: true,    //Remover isso em produção
+      autoShow: true 
+     };
+     this.admobFree.banner.config(bannerConfig);
+     this.admobFree.banner.prepare();
+
+
     this.updateCycles();
   }
 
