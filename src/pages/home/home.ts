@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, AlertController, LoadingController, Button } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import { NewCyclePage } from '../new-cycle/new-cycle';
 import { CycleProvider } from '../../providers/cycle/cycle';
 import { Cycle } from '../../models/Cycle';
 import { CreateCustomCycleModalPage } from '../create-custom-cycle-modal/create-custom-cycle-modal';
+import { CycleUtil } from '../../Util/CycleUtil';
 
 /**
  * @author Carlos W. Gama
@@ -21,6 +22,11 @@ export class HomePage {
 
   hasCycle: boolean = false;
   cycles: Cycle[] = [];
+
+  /** COR USADA PARA OS CICLOS NO RELOGIO */
+  private readonly CYCLE_COLOR: string = 'rgba(86, 206, 86, 0.5)';
+  /** COR USADA PARA OS INTERVALOS NO RELOGIO */
+  private readonly INTERVAL_COLOR: string = 'rgba(255, 255, 255, 0)';
 
   constructor(public navCtrl: NavController, 
     private cycleProvider: CycleProvider, 
@@ -45,7 +51,7 @@ export class HomePage {
     this.cycleProvider.getAll().then((cycles: Cycle[]) => {
       this.cycles = cycles;
       this.hasCycle = (this.cycles != null && this.cycles.length > 0) 
-      //this.createClock();
+      this.createClock();
       loading.dismiss();
     });
   }
@@ -55,18 +61,19 @@ export class HomePage {
    */
   private createClock() {
     
-    var tempo = [];
+    var tempo: number[] = CycleUtil.getClockPercent(this.cycles);
     var cores = [];
+    let change = true;
     
+    tempo.forEach((x) => {
+      cores.push((change ? this.CYCLE_COLOR : this.INTERVAL_COLOR));
+      change = !change;
+    });
 
-    tempo = [3, 4.5, 0.2, 4];
-    cores = [
-      'rgba(86, 206, 86, 0.5)',
-      'rgba(255, 255, 255, 0)',
-      'rgba(86, 206, 86, 0.5)',
-      'rgba(255, 255, 255, 0)'
-    ];
-
+    let positionRotation:number = 1;
+    if (this.cycles.length > 0) 
+      positionRotation = this.cycles[0].startHour + ((this.cycles[0].startMinute)/60);
+    
     this.clock = new Chart(this.clock.nativeElement, {
       type: 'doughnut',
       data: {
@@ -78,8 +85,8 @@ export class HomePage {
       options: {
         tooltips: {enabled: false},
         animation: {animateRotate: false},
-        rotation: -1.05 * 0.5 * (3),
-        cutoutPercentage: 0,
+        rotation: -1.05 * 0.25 * (6 - positionRotation),
+        cutoutPercentage: 65,
         legend: {
           display: false
         }
@@ -110,7 +117,7 @@ export class HomePage {
         {text: "Cancelar", role: "cancel"},
         {text: "Excluir", handler: () => {
           this.cycleProvider.delete(id);
-          this.updateCycles();
+          this.navCtrl.setRoot(HomePage); //Atualiza a pagina
         }}
       ]
     }).present();
@@ -128,7 +135,7 @@ export class HomePage {
         {text: "Cancelar", role:"cancel"},
         {text: "Excluir", handler: (data) =>  {
           this.cycleProvider.deleteAll();
-          this.updateCycles();
+          this.navCtrl.setRoot(HomePage); //Atualiza a pagina
         }}
       ]
     }).present();

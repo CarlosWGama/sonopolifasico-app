@@ -29,16 +29,16 @@ export class CycleProvider extends MyProvider {
       return this.getDB().then((db: SQLiteObject) => {
         
         let datas: Promise<Cycle[]> = db.executeSql("SELECT * FROM cycles ORDER BY start_hour", {}).then(data => {  
-        let cycles: Cycle[] = [];
-        
-        //Encontrou resultados
-        if (data.rows.length > 0) {
-            for (let i = 0; i < data.rows.length; i++) {
-              let r = data.rows.item(i);
-              cycles.push(new Cycle(r.start_hour,r.start_minute, r.finish_hour, r.finish_minute, r.id));
+          let cycles: Cycle[] = [];
+          
+          //Encontrou resultados
+          if (data.rows.length > 0) {
+              for (let i = 0; i < data.rows.length; i++) {
+                let r = data.rows.item(i);
+                cycles.push(new Cycle(r.start_hour,r.start_minute, r.finish_hour, r.finish_minute, r.id));
+              }
             }
-          }
-        
+          
           return cycles;
         });
         return datas;

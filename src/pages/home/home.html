@@ -20,7 +20,7 @@
   </div>
 
   <canvas id="clock" #clock width="70" height="70" [hidden]="!hasCycle"></canvas>
-
+ 
   
   
   <!-- CONTEUDOS -->
@@ -35,13 +35,11 @@
       <ion-card-content>
         <p class="hora-inicio"><b>Deitar:</b> {{cycle.startHour + ":" + cycle.startMinute | time}}</p>
         <p class="hora-fim"><b>Acordar:</b> {{cycle.finishHour+":"+cycle.finishMinute | time}}</p>
+        <p class="duracao">Duração {{cycle.duration | durationTime}} </p>
       </ion-card-content>
 
       <!-- OPÇÕES -->
       <ion-row style="clear:both">
-        <ion-col>
-          <button ion-button icon-start clear small><ion-icon name="alarm"></ion-icon>Alarme</button>
-        </ion-col>
         <ion-col>
             <button ion-button icon-start clear small (click)="delete(cycle.id)"><ion-icon name="trash"></ion-icon>Remover</button>
           </ion-col>

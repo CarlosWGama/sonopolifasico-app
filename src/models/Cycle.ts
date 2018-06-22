@@ -9,6 +9,16 @@ export class Cycle {
     private adjustHour(hour: number): number {
         return (hour < 24 ? hour : hour - 24 );
     }
+
+    get duration(): number {
+        let duration = 0;
+        let fHour = (this.finishHour >= this.startHour ? this.finishHour : this.finishHour + 24);
+        let hours = fHour - this.startHour;
+
+        duration = (hours * 60) - this.startMinute + this.finishMinute; 
+
+        return duration;
+    }
 }
 
 

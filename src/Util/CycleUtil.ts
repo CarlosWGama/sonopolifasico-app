@@ -105,4 +105,43 @@ export class CycleUtil {
 
         return valid;
     } 
+
+    /** Busca a porcentagem que cada horario ocupa */
+    public static getClockPercent(cycles: Cycle[]): number[] {
+        let percents: number[] = [];
+        let day: number = 24 * 60;
+
+        /** Recuper ao intervalo */
+        let lastCycle: Cycle = null;
+        /** Recupera o restante do temp dia que falta */
+        let rest: number = day;
+        cycles.forEach((c: Cycle) => {
+            //Intervalo em relação ao ultimo ciclo
+            if (lastCycle != null) {
+                let duration = 0;
+                let sHour = (lastCycle.finishHour <= c.startHour ? c.startHour : c.startHour + 24);
+                let hours = sHour - lastCycle.finishHour;
+               
+                duration = (hours * 60) + c.startMinute - lastCycle.finishMinute;
+               
+                let percent = (duration * 100) / day;
+                percents.push(percent);
+                rest -= duration; 
+            }
+           
+            //Porcentgaem do ciclo atual
+            let percent = (c.duration * 100) / day;
+            percents.push(percent);
+            rest -= c.duration;
+          
+            lastCycle = c;
+        });
+
+        //Adiciona o horario que sobrou do dia
+        if (rest > 0) {
+            let percent = (rest * 100) / day;
+            percents.push(percent);
+        }
+        return percents;
+    }
 }
