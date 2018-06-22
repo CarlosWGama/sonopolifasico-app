@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'settings' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>{{ 'language' | translate }}</ion-label>
+      
+      <ion-select [(ngModel)]="language">
+        <ion-option *ngFor="let l of languages" value="{{l.folder}}" >{{l.label}}</ion-option>
+      </ion-select> 
+    </ion-item>
+
+    <button ion-button full (click)="save()">{{ 'save' | translate}}</button>
+  </ion-list>
+</ion-content>

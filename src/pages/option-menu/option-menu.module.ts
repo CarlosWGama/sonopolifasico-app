@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { CreateCyclesModalPage } from './create-cycles-modal';
+import { OptionMenuPage } from './option-menu';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
-    CreateCyclesModalPage,
+    OptionMenuPage,
   ],
   imports: [
-    IonicPageModule.forChild(CreateCyclesModalPage),
+    IonicPageModule.forChild(OptionMenuPage),
     TranslateModule.forChild()
   ],
 })
-export class CreateCyclesModalPageModule {}
+export class OptionMenuPageModule {}

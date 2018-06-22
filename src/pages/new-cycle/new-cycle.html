@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Novo Ciclo</ion-title>
+    <ion-title>{{'title_new_cycle' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -14,19 +14,15 @@
       <!-- MONOFÁSICO -->
       <ion-slide>
         <ion-card>
-          <img src="../assets/imgs/cycles/monophasic.png"/>
+          <img src="assets/imgs/cycles/monophasic.png"/>
           <ion-card-content>
-            <ion-card-title>
-              Monofásico
-            </ion-card-title>
-            <p>
-              É o tipo de ciclo adotado no dia-dia. Único ciclo com duração de 8h.
-            </p>
+            <ion-card-title>{{ 'monophasic' | translate }}</ion-card-title>
+            <p>{{ 'monophasic_description' | translate }}</p>
           </ion-card-content>
 
           <ion-row>
             <ion-col>
-              <button ion-button icon-start clear small (click)="create(1)"><ion-icon name="alarm"></ion-icon>  Criar</button>
+              <button ion-button icon-start clear small (click)="create(1)"><ion-icon name="alarm"></ion-icon> {{'create'|translate}}</button>
             </ion-col>
           </ion-row>
 
@@ -36,19 +32,15 @@
       <!-- BIFASICO -->
       <ion-slide>
           <ion-card>
-            <img src="../assets/imgs/cycles/biphasic.png"/>
+            <img src="assets/imgs/cycles/biphasic.png"/>
             <ion-card-content>
-              <ion-card-title>
-                Bifásico
-              </ion-card-title>
-              <p>
-                Ideal para quem quer começar usar sono polifásico. Consiste em um ciclo longo de 6h e uma soneca de 30 minutos.
-              </p>
+              <ion-card-title> {{ 'biphasic' | translate }} </ion-card-title>
+              <p> {{ 'biphasic_description' | translate }} </p>
             </ion-card-content>
   
             <ion-row>
               <ion-col>
-                <button ion-button icon-start clear small (click)="create(2)"><ion-icon name="alarm"></ion-icon>  Criar</button>
+                <button ion-button icon-start clear small (click)="create(2)"><ion-icon name="alarm"></ion-icon>  {{'create'|translate}}</button>
               </ion-col>
             </ion-row>
   
@@ -58,19 +50,15 @@
         <!-- EVERYMAN -->
         <ion-slide>
           <ion-card>
-            <img src="../assets/imgs/cycles/everyman.png"/>
+            <img src="assets/imgs/cycles/everyman.png"/>
             <ion-card-content>
-              <ion-card-title>
-                Everyman
-              </ion-card-title>
-              <p>
-                Um ciclo longo de 3h e 3 menos de 20 minutos de duração.
-              </p>
+              <ion-card-title>{{ 'everyman' | translate }} </ion-card-title>
+              <p>{{ 'everyman_description' | translate }}</p>
             </ion-card-content>
   
             <ion-row>
               <ion-col>
-                <button ion-button icon-start clear small (click)="create(3)"><ion-icon name="alarm"></ion-icon>  Criar</button>
+                <button ion-button icon-start clear small (click)="create(3)"><ion-icon name="alarm"></ion-icon>  {{'create'|translate}}</button>
               </ion-col>
             </ion-row>
   
@@ -80,19 +68,15 @@
         <!-- DYMAXION -->
         <ion-slide>
           <ion-card>
-            <img src="../assets/imgs/cycles/dymaxion.png"/>
+            <img src="assets/imgs/cycles/dymaxion.png"/>
             <ion-card-content>
-              <ion-card-title>
-                Dymaxion
-              </ion-card-title>
-              <p>
-                Ciclo mais espaçado com 2h de sono diária, contendo 4 ciclos de 30minutos de duração cada.
-              </p>
+              <ion-card-title>{{ 'dymaxion' | translate }}</ion-card-title>
+              <p>{{ 'dymaxion_description' | translate }}</p>
             </ion-card-content>
   
             <ion-row>
               <ion-col>
-                <button ion-button icon-start clear small (click)="create(4)"><ion-icon name="alarm"></ion-icon>  Criar</button>
+                <button ion-button icon-start clear small (click)="create(4)"><ion-icon name="alarm"></ion-icon>  {{'create'|translate}}</button>
               </ion-col>
             </ion-row>
   
@@ -102,19 +86,15 @@
         <!-- UBERMAN -->
         <ion-slide>
           <ion-card>
-            <img src="../assets/imgs/cycles/uberman.png"/>
+            <img src="assets/imgs/cycles/uberman.png"/>
             <ion-card-content>
-              <ion-card-title>
-                Uberman
-              </ion-card-title>
-              <p>
-                Seis cochilos de 20 minutos ao longo do dia, contabilizando 2h no dia.
-              </p>
+              <ion-card-title> {{ 'uberman' | translate }} </ion-card-title>
+              <p> {{ 'uberman_description' | translate }} </p>
             </ion-card-content>
   
             <ion-row>
               <ion-col>
-                <button ion-button icon-start clear small (click)="create(5)"><ion-icon name="alarm"></ion-icon>  Criar</button>
+                <button ion-button icon-start clear small (click)="create(5)"><ion-icon name="alarm"></ion-icon>  {{'create'|translate}}</button>
               </ion-col>
             </ion-row>
   

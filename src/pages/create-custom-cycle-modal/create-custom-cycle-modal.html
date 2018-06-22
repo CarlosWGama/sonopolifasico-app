@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Adicionar ciclo</ion-title>
+    <ion-title>{{ 'title_add_cycle' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,9 +9,9 @@
 
 <ion-content padding>
   
-  <p class="info"> Crie seu ciclo personalizado</p>
+  <p class="info"> {{ 'create_your_custom_cycle' | translate }}</p>
   <ion-item>
-    <ion-label>Hora de deitar</ion-label>
+    <ion-label>{{ 'to_bed' | translate }}</ion-label>
     
     <ion-select [(ngModel)]="sHour">
       <ion-option *ngFor="let h of hours; let i = index " value="{{h}}" [selected]="i == 0">{{h}}</ion-option>
@@ -28,7 +28,7 @@
   </ion-item>
 
   <ion-item>
-    <ion-label>Hora de acordar</ion-label>
+    <ion-label>{{ 'to_wake_up' | translate }}</ion-label>
     
     <ion-select [(ngModel)]="fHour">
       <ion-option *ngFor="let h of hours; let i = index " value="{{h}}" [selected]="i == 0">{{h}}</ion-option>
@@ -44,5 +44,5 @@
 
   </ion-item>
 
-  <button ion-button full (click)="create()">Criar</button>
+  <button ion-button full (click)="create()">{{ 'create' | translate }}</button>
 </ion-content>

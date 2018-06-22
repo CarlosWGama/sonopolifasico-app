@@ -3,11 +3,11 @@
   <ion-navbar>
    
       <ion-buttons start>
-        <button ion-button color="danger" (click)="close()">Cancelar</button>
+        <button ion-button color="danger" (click)="close()">{{ 'cancel' | translate }}</button>
       </ion-buttons>
     
 
-      <ion-title> Primeiro Ciclo </ion-title>
+      <ion-title> {{ 'title_first_cycle' | translate }}  </ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,11 +15,11 @@
 
 <ion-content padding>
  
-    <p class="info">Selecione a hora do seu primeiro ciclo</p> 
-    <p text-center>(sono mais longo)</p>
+    <p class="info">{{ 'info_select_first_cycle' | translate }}</p> 
+    <p text-center>{{ 'info_select_long_sleep' | translate }}</p>
 
     <ion-item>
-      <ion-label>Hora : Minuto</ion-label>
+      <ion-label>{{ 'info_hour_minute' | translate }}</ion-label>
       
       <ion-select [(ngModel)]="sHour">
         <ion-option *ngFor="let h of hours; let i = index " value="{{h}}" [selected]="i == 0">{{h}}</ion-option>
@@ -35,5 +35,5 @@
 
     </ion-item>
 
-    <button ion-button full (click)="create()">Criar</button>
+    <button ion-button full (click)="create()">{{ 'create' | translate }}</button>
 </ion-content>

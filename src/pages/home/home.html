@@ -1,8 +1,14 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      SEUS CICLOS
+      {{ 'title_your_cycles' | translate }}
     </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openOptionMenu($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -12,41 +18,37 @@
   <div *ngIf="!hasCycle">
     <ion-card color="light">
       <ion-card-content>
-        <p style="text-align:center">Você ainda não possui nenhum ciclo</p>
+        <p style="text-align:center">{{ 'not_has_cycle' | translate }}</p>
       </ion-card-content>
     </ion-card>
   
-    <button id="create-cycle" ion-button full color="danger" (click)="newSleepCycle()" >Criar novo Ciclo</button>
+    <button id="create-cycle" ion-button full color="danger" (click)="newSleepCycle()" >{{ 'create_new_cycle' | translate }}</button>
   </div>
 
   <canvas id="clock" #clock width="70" height="70" [hidden]="!hasCycle"></canvas>
  
-  
-  
   <!-- CONTEUDOS -->
   <div *ngIf="hasCycle">
 
     <!-- CICLOS -->
     <ion-card color="cards" *ngFor="let cycle of cycles; let i = index">
       <!-- CICLO -->
-      <ion-card-header>Ciclo {{i + 1}}</ion-card-header>
+      <ion-card-header>{{ 'cycle' | translate }} {{i + 1}}</ion-card-header>
       
       <!-- HORARIOS -->
       <ion-card-content>
-        <p class="hora-inicio"><b>Deitar:</b> {{cycle.startHour + ":" + cycle.startMinute | time}}</p>
-        <p class="hora-fim"><b>Acordar:</b> {{cycle.finishHour+":"+cycle.finishMinute | time}}</p>
-        <p class="duracao">Duração {{cycle.duration | durationTime}} </p>
+        <p class="hora-inicio"><b>{{ 'to_bed' | translate }}</b> {{cycle.startHour + ":" + cycle.startMinute | time}}</p>
+        <p class="hora-fim"><b>{{ 'to_wake_up' | translate }}</b> {{cycle.finishHour+":"+cycle.finishMinute | time}}</p>
+        <p class="duracao">{{ 'duration' | translate }} {{cycle.duration | durationTime}} </p>
       </ion-card-content>
 
       <!-- OPÇÕES -->
       <ion-row style="clear:both">
         <ion-col>
-            <button ion-button icon-start clear small (click)="delete(cycle.id)"><ion-icon name="trash"></ion-icon>Remover</button>
+            <button ion-button icon-start clear small (click)="delete(cycle.id)"><ion-icon name="trash"></ion-icon>{{ 'remove' | translate }}</button>
           </ion-col>
       </ion-row>
     </ion-card>
-
-  
   </div>
 
   <ion-fab bottom right *ngIf="hasCycle">

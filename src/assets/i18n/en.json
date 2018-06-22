@@ -1,0 +1,47 @@
+{
+    "settings":"Settings",
+    "language": "Language",
+    "cycle": "Cycle",
+
+    "save":"Save",
+    "create":"Create",
+    "cancel": "Cancel",
+    "create_new_cycle": "Create a new Cycle Sleep",
+    "remove": "Remove",
+
+    "to_bed": "To bed:",
+    "to_wake_up": "To wake up:",
+    "duration": "Duration",
+
+    "title_new_cycle": "New Cycle Sleep",
+    "title_first_cycle": "First Cycle",
+    "title_your_cycles": "Your Cycles",
+    "title_add_cycle": "Add a Cycle",
+
+    "create_your_custom_cycle": "Create your custom cycle",
+    "not_has_cycle": "You still don't have any cycle",
+
+    "info_select_first_cycle": "Select the hour that you usually go sleep",
+    "info_select_long_sleep": "(Long cycle sleep)",
+
+    "info_hour_minute": "Hour:Minute",
+
+    "updating": "Updating",
+    "alert_delete_cycle": "Do you really want delete this cycle?",
+    "alert_delete_cycle_sleep": "Delete all cycles",
+    "alert_delete_msg_cycle_sleep":"This action can not be undone",
+    "alert_error_create_cycle":"Time not allowed, conflict as another cycle",
+
+    "monophasic": "Monophasic",
+    "monophasic_description": "Single cycle lasting 8h",
+    "biphasic": "Biphasic",
+    "biphasic_description": "A 6-hour cycle sleep plus a 30-minute nap",
+    "everyman": "Everyman",
+    "everyman_description": "A 3-hour cycle sleep plus 3 20-minute naps.",
+    "dymaxion": "Dymaxion",
+    "dymaxion_description": "2 hours of daily sleep, taking 4 30-minute naps.",
+    "uberman": "Uberman",
+    "uberman_description": "Six 20-minute naps throughout  the day."
+
+
+}

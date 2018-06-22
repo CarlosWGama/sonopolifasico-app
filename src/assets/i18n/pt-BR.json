@@ -1,0 +1,48 @@
+{
+    "settings":"Configurações",
+    "language": "Idioma",
+    "cycle": "Ciclo",
+    
+    "save": "Salvar",
+    "create":"Criar",
+    "cancel": "Cancelar",
+    "create_new_cycle": "Criar novo Ciclo",
+    "remove": "Remover",
+
+    "to_bed": "Deitar:",
+    "to_wake_up": "Acordar:",
+    "duration": "Duração",
+
+    "title_new_cycle": "Novo ciclo de sono",
+    "title_first_cycle": "Primeiro ciclo",
+    "title_your_cycles": "Seus ciclos",
+    "title_add_cycle": "Adicionar ciclo",
+
+    "create_your_custom_cycle": "Crie seu ciclo personalizado",
+    "not_has_cycle": "Você ainda não possui nenhum ciclo",
+
+    "info_select_first_cycle": "Selecione a hora do seu primeiro ciclo",
+    "info_select_long_sleep": "(sono mais longo)",
+
+    "info_hour_minute": "Hora:Minuto",
+
+    "updating": "Atualizando",
+    "alert_delete_cycle": "Tem certeza que deseja deletar esse ciclo?",
+    "alert_delete_cycle_sleep": "Deletar todos ciclos",
+    "alert_delete_msg_cycle_sleep" : "Essa ação não pode ser desfeita",
+    "alert_error_create_cycle":"Horário não permitido, conflito como outro ciclo",
+
+    "monophasic": "Monofásico",
+    "monophasic_description": "Ciclo único com duração de 8h",
+    "biphasic": "Bifásico",
+    "biphasic_description": "Um ciclo longo de 6 horas e uma soneca de 30 minutos",
+    "everyman": "Everyman",
+    "everyman_description": "Um ciclo longo de 3 horas e 3 sonecas 20 minutos cada uma.",
+    "dymaxion": "Dymaxion",
+    "dymaxion_description": "2h de sono diária, em 4 ciclos de 30minutos de duração cada.",
+    "uberman": "Uberman",
+    "uberman_description": "Seis cochilos de 20 minutos ao longo do dia, contabilizando 2h no dia."
+    
+
+
+}

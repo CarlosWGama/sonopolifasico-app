@@ -4,6 +4,7 @@ import { CycleProvider } from '../../providers/cycle/cycle';
 import { Cycle } from '../../models/Cycle';
 import { CycleUtil } from '../../Util/CycleUtil';
 import { HomePage } from '../home/home';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  *  @author Carlos W. Gama
@@ -28,7 +29,8 @@ export class CreateCustomCycleModalPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private cycleProvider: CycleProvider,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private translate: TranslateService) {
 
     for (let i = 0; i < 24; i++) 
       this.hours.push((i < 10 ? "0"+i : i.toString() ));
@@ -42,8 +44,12 @@ export class CreateCustomCycleModalPage {
     this.fHour = "00";
     this.fMinute = "00";
     this.cycles = this.navParams.get('cycles') as Cycle[];
+
+    this.translate.get("alert_error_create_cycle").subscribe(text => this.textError = text);
+
   }
 
+  private textError: number;
   /** Cria o ciclo */
   create(): void {
     let newCycle: Cycle = new Cycle(Number(this.sHour), Number(this.sMinute), Number(this.fHour), Number(this.fMinute));
@@ -53,7 +59,7 @@ export class CreateCustomCycleModalPage {
       this.navCtrl.push(HomePage);
     } else {
       this.alertCtrl.create({
-        message: "Horário não permitido, conflito como outro ciclo",
+        message: this.textError,
         buttons: ['OK']
       }).present(); 
     }
