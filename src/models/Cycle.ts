@@ -1,7 +1,7 @@
 
 export class Cycle {
 
-    public constructor(public startHour: number, public startMinute: number, public finishHour?: number, public finishMinute?: number, public id?: number) {
+    public constructor(public startHour: number, public startMinute: number, public finishHour?: number, public finishMinute?: number, public id?: number, public notification?: boolean) {
         this.startHour = this.adjustHour(this.startHour);
         this.finishHour = this.adjustHour(this.finishHour);
     }

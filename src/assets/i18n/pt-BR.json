@@ -12,6 +12,7 @@
     "to_bed": "Deitar:",
     "to_wake_up": "Acordar:",
     "duration": "Duração",
+    "notification_time_to_bed": "Hora de deitar",
 
     "title_new_cycle": "Novo ciclo de sono",
     "title_first_cycle": "Primeiro ciclo",
@@ -25,12 +26,16 @@
     "info_select_long_sleep": "(sono mais longo)",
 
     "info_hour_minute": "Hora:Minuto",
+    "enable_notification": "Habilitar Notificação",
+    "disable_notification": "Desabilitar notificação",
 
     "updating": "Atualizando",
     "alert_delete_cycle": "Tem certeza que deseja deletar esse ciclo?",
     "alert_delete_cycle_sleep": "Deletar todos ciclos",
     "alert_delete_msg_cycle_sleep" : "Essa ação não pode ser desfeita",
     "alert_error_create_cycle":"Horário não permitido, conflito como outro ciclo",
+    "alert_enable_notification": "Receber notificação quando for a hora de dormir?",
+    "alert_disable_notification": "Desabilitar notificação?",
 
     "monophasic": "Monofásico",
     "monophasic_description": "Ciclo único com duração de 8h",

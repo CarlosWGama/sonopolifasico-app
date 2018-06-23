@@ -13,8 +13,6 @@
 </ion-header>
 
 <ion-content>
-
-  
   <div *ngIf="!hasCycle">
     <ion-card color="light">
       <ion-card-content>
@@ -44,9 +42,15 @@
 
       <!-- OPÇÕES -->
       <ion-row style="clear:both">
+        <!-- ALARM -->
         <ion-col>
-            <button ion-button icon-start clear small (click)="delete(cycle.id)"><ion-icon name="trash"></ion-icon>{{ 'remove' | translate }}</button>
-          </ion-col>
+          <button *ngIf="!cycle.notification" ion-button icon-start clear small (click)="notification(cycle)"><ion-icon name="notifications-off"></ion-icon>{{ 'enable_notification' | translate }}</button>
+          <button *ngIf="cycle.notification"ion-button icon-start clear small (click)="notification(cycle)"><ion-icon name="notifications"></ion-icon>{{ 'disable_notification' | translate }}</button>
+        </ion-col>
+        <!-- REMOVE -->
+        <ion-col>
+          <button ion-button icon-start clear small (click)="delete(cycle.id)"><ion-icon name="trash"></ion-icon>{{ 'remove' | translate }}</button>
+        </ion-col>
       </ion-row>
     </ion-card>
   </div>

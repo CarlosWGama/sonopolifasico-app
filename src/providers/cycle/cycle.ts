@@ -35,7 +35,7 @@ export class CycleProvider extends MyProvider {
           if (data.rows.length > 0) {
               for (let i = 0; i < data.rows.length; i++) {
                 let r = data.rows.item(i);
-                cycles.push(new Cycle(r.start_hour,r.start_minute, r.finish_hour, r.finish_minute, r.id));
+                cycles.push(new Cycle(r.start_hour,r.start_minute, r.finish_hour, r.finish_minute, r.id, r.notification as boolean));
               }
             }
           
@@ -61,6 +61,17 @@ export class CycleProvider extends MyProvider {
     public deleteAll() {
       this.getDB().then((db: SQLiteObject) => {
         db.executeSql("DELETE FROM cycles", []);
+      });
+    }
+
+    /**
+     * Atualizaa a informação se existe ou não notificação
+     * @param id 
+     * @param enable 
+     */
+    public updateNotification(id: number, enable: number) {
+      this.getDB().then((db: SQLiteObject) => {
+        db.executeSql("UPDATE cycles SET notification = ? WHERE id = ?", [enable, id]);
       });
     }
 }

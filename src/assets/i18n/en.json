@@ -12,6 +12,7 @@
     "to_bed": "To bed:",
     "to_wake_up": "To wake up:",
     "duration": "Duration",
+    "notification_time_to_bed": "Time to bed",
 
     "title_new_cycle": "New Cycle Sleep",
     "title_first_cycle": "First Cycle",
@@ -25,12 +26,16 @@
     "info_select_long_sleep": "(Long cycle sleep)",
 
     "info_hour_minute": "Hour:Minute",
+    "enable_notification": "Enable notification",
+    "disable_notification": "Disable notification",
 
     "updating": "Updating",
     "alert_delete_cycle": "Do you really want delete this cycle?",
     "alert_delete_cycle_sleep": "Delete all cycles",
     "alert_delete_msg_cycle_sleep":"This action can not be undone",
     "alert_error_create_cycle":"Time not allowed, conflict as another cycle",
+    "alert_enable_notification": "Do you want get a notification when time to bed?",
+    "alert_disable_notification": "Do you want disable notification?",
 
     "monophasic": "Monophasic",
     "monophasic_description": "Single cycle lasting 8h",

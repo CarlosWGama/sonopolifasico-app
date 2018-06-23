@@ -19,6 +19,7 @@ import { OptionMenuPageModule } from '../pages/option-menu/option-menu.module';
 import { SettingsPageModule } from '../pages/settings/settings.module';
 import { createTranslateLoader } from '../providers/create-translate-loader/create-translate-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CycleProvider,
     SQLite,
+    LocalNotifications,
     AdMobFree  ]
 })
 export class AppModule {}

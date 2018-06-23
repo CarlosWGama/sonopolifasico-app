@@ -4,6 +4,7 @@ import { Cycle, CycleType } from '../../models/Cycle';
 import { CycleUtil } from '../../Util/CycleUtil';
 import { CycleProvider } from '../../providers/cycle/cycle';
 import { HomePage } from '../home/home';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 /**
  * @author Carlos W. Gama
@@ -23,6 +24,7 @@ export class CreateCyclesModalPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     public viewCtrl: ViewController,
+    private not: LocalNotifications,
     private cycleProvider: CycleProvider) {
     
     for (let i = 0; i < 24; i++) 
@@ -46,6 +48,10 @@ export class CreateCyclesModalPage {
     let cycles: Cycle[] = [];
     let cycleType = this.navParams.get("cycle") as CycleType;
     let lastCycle: Cycle = null;
+''
+    //Limpa os ciclos anteriores caso haja
+    this.cycleProvider.deleteAll();
+    this.not.cancelAll();
 
     switch(cycleType) {
       case CycleType.MONOPHASIC:
