@@ -175,7 +175,9 @@ export class HomePage {
               id: cycle.id,
               title: this.textNotification,
               sound: 'file://sound.mp3',
-              every: { every: ELocalNotificationTriggerUnit.DAY , firstAt: time }
+              //trigger: { every: ELocalNotificationTriggerUnit.DAY , firstAt: time }
+              //Precisa trocar no código disponibilizado pela node_modules/@ionic-native/local-notification/index.d.ts desabilitar a interface do every
+              trigger: { every: { hour: cycle.startHour, minute: cycle.startMinute, second: 0 }, count: 1 }
             });
           } else { //Disabilita
             this.not.cancel(cycle.id);
